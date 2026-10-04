@@ -176,7 +176,7 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
                   <span className="text-accent">/{project.number}</span>
                 </div>
                 <h3 className="text-[23px] leading-tight font-semibold tracking-[-.04em] sm:text-[26px]">
-                  <button className="text-left" onClick={() => onSelect(project)}>
+                  <button className="text-left text-fg" onClick={() => onSelect(project)}>
                     {project.title}
                   </button>
                 </h3>
@@ -194,7 +194,7 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
                 <div className="mt-7 flex items-center justify-between border-t border-line pt-5">
                   <button
                     onClick={() => onSelect(project)}
-                    className="flex items-center gap-3 text-xs font-medium transition-colors hover:text-accent"
+                    className="flex items-center gap-3 text-xs font-medium text-fg transition-colors hover:text-accent"
                   >
                     Explore the build
                     <ArrowRight size={16} />
