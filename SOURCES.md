@@ -50,6 +50,7 @@ The [LinkedIn URL](https://www.linkedin.com/in/pepetibalaji/) came from the supp
 - Project links point to source repositories. No live project demo URL or production deployment is claimed.
 - No testimonials, client names, certifications, business impact figures, or performance measurements were invented.
 - System diagrams and project illustrations are explanatory visuals, not screenshots of a deployed product.
+- The Quality Lab executes local validation and duplicate-event checks on synthetic checkout fixtures. Its results describe the demo only; they are not live test results from Oracle or either featured project.
 
 ## Deployment references
 

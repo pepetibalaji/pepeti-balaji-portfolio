@@ -1,8 +1,10 @@
 # Pepeti Balaji — Portfolio
 
-A personal portfolio presenting Pepeti Balaji's test automation experience, backend engineering projects, technical skills, and resume. Built with React, TypeScript, and Vite.
+A personal portfolio presenting Pepeti Balaji's test automation experience, backend engineering projects, technical skills, and resume. Built with React 19, TypeScript, Tailwind CSS 4, Motion, and Vite.
 
-The site includes project details in a dialog, a theme switcher, a skills overview, professional links, and a downloadable resume. It runs as a static frontend without a backend or environment variables.
+The portfolio uses a dark engineering-studio design with a light-theme option. It includes a pointer-responsive isometric system model, animated impact metrics, project case studies, a keyboard command menu (Ctrl/Cmd + K), and a working quality lab. The lab runs local validation and event-deduplication assertions against clearly labeled sample data.
+
+Layouts and components are styled with Tailwind utilities. The small global stylesheet contains theme tokens, font definitions, and visual effects. Motion handles reveals, state transitions, and pointer interaction, with reduced-motion support. The site remains a static frontend: no backend or environment variables are required.
 
 ## Run locally
 
@@ -43,6 +45,8 @@ The application lives at the repository root. If you later move it into a subfol
 ## Update your portfolio
 
 - Edit `src/data.ts` to update profile details, experience, project descriptions, skills, and links.
+- Edit section components in `src/components/`; page composition and contact actions live in `src/App.tsx`.
+- Customize Tailwind theme tokens in `src/styles.css`. The official Vite integration is configured in `vite.config.ts`.
 - Place static assets in `public/`.
 - Replace `public/Pepeti-Balaji-Resume.pdf` to update the resume download while preserving its URL.
 - Review the page title and metadata in `index.html` when changing your professional positioning.
@@ -60,6 +64,11 @@ npm test
 npm run format:check
 ```
 
-The Playwright suite checks keyboard navigation, project dialogs and focus restoration, theme persistence, mobile layouts, contact links, clipboard behavior, resume downloads, and automated accessibility with axe. GitHub Actions runs formatting, the production build, and browser tests on pushes to main and pull requests. Automated checks complement manual visual review; they do not establish full WCAG conformance.
+The Playwright suite checks keyboard navigation, project dialogs and focus restoration, theme persistence, mobile layouts, contact links, clipboard behavior, resume downloads, command-menu search and keyboard navigation, all three lab scenarios, cancellation of pending lab results, and automated accessibility with axe. GitHub Actions runs formatting, the production build, and browser tests on pushes to main and pull requests. Automated checks complement manual visual review; they do not establish full WCAG conformance.
 
 DM Sans and Manrope are served locally from `public/fonts/`; their SIL Open Font Licenses are included. After deployment, set the Open Graph and Twitter image URLs in `index.html` to your absolute deployed origin for social crawlers.
+
+## UI implementation references
+
+- [Tailwind CSS with Vite](https://tailwindcss.com/docs/installation/using-vite)
+- [Motion for React](https://motion.dev/docs/react-animation)

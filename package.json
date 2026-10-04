@@ -14,17 +14,20 @@
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
+    "motion": "^14.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.63.0",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^4.7.0",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
-    "vite": "^6.4.3",
-    "prettier": "^3.6.2"
+    "vite": "^6.4.3"
   }
 }
