@@ -54,6 +54,8 @@ The application lives at the repository root. If you later move it into a subfol
 
 Contact actions use the published contact links. No form submission service is required.
 
+Project descriptions and diagrams are based on the current GitHub source, reviewed on 4 October 2026. Each case study links directly to implementation files at the reviewed commit. When refreshing a project, update its copy, stack, capabilities, revision, and source links together in `src/data.ts`.
+
 Content provenance and verification limits are recorded in [SOURCES.md](./SOURCES.md).
 
 ## Quality checks

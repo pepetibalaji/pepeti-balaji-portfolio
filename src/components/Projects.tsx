@@ -6,13 +6,10 @@ import {
   BookOpen,
   Check,
   CheckCircle2,
-  Database,
+  Code2,
   GitBranch,
   Github,
-  Layers3,
-  LockKeyhole,
   Network,
-  Terminal,
   Workflow,
   X,
 } from 'lucide-react';
@@ -28,64 +25,88 @@ function CommercePreview() {
       <div className="absolute top-1/2 left-1/2 size-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b6f378]/8 blur-3xl" />
       <div className="relative flex items-center justify-between border-b border-[#344633] pb-4 font-mono text-[9px] text-[#9aac93]">
         <span className="flex items-center gap-2">
-          <span className="size-1.5 rounded-full bg-[#c6f36b]" /> commerce / system.map
+          <span className="size-1.5 rounded-full bg-[#c6f36b]" /> pepekart / checkout.flow
         </span>
         <Network size={15} />
       </div>
-      <div className="relative mx-auto mt-5 max-w-[440px]">
-        <div className="mx-auto flex w-44 items-center justify-between rounded-lg border border-[#587047] bg-[#293820] px-4 py-3 text-[11px] text-[#e4f7d3]">
-          <Layers3 size={16} />
-          <span>API GATEWAY</span>
-          <span className="size-1 rounded-full bg-[#c6f36b]" />
-        </div>
-        <svg viewBox="0 0 440 45" className="h-10 w-full" fill="none">
-          <path d="M220 0V18H68V45M220 18V45M220 18H372V45" stroke="#657955" />
-          <path
-            d="M220 0V18H68V45M220 18V45M220 18H372V45"
-            className="flow-line"
-            stroke="#c6f36b"
+      <svg
+        viewBox="0 0 440 250"
+        className="relative mx-auto mt-2 h-[235px] w-full max-w-[480px] sm:h-[270px]"
+        fill="none"
+      >
+        <defs>
+          <marker
+            id="commerce-arrow"
+            viewBox="0 0 6 6"
+            refX="5"
+            refY="3"
+            markerWidth="5"
+            markerHeight="5"
+            orient="auto-start-reverse"
+          >
+            <path d="M0 0L6 3L0 6" fill="#a7c58a" />
+          </marker>
+        </defs>
+        <g stroke="#6f8858" strokeWidth="1.2" markerEnd="url(#commerce-arrow)">
+          <path d="M172 43H268" />
+          <path d="M84 72V116" markerStart="url(#commerce-arrow)" />
+          <path d="M84 150V194" markerStart="url(#commerce-arrow)" />
+          <path d="M355 150V194" />
+        </g>
+        <path d="M84 72V116M84 150V194M355 150V194" className="flow-line" stroke="#c6f36b" />
+        <g fontFamily="monospace" textAnchor="middle">
+          <rect x="4" y="14" width="168" height="58" rx="9" fill="#24331d" stroke="#6a884b" />
+          <text x="88" y="40" fill="#e4f7d3" fontSize="12">
+            ORDER SERVICE
+          </text>
+          <text x="88" y="58" fill="#a9be99" fontSize="9">
+            Idempotent checkout
+          </text>
+          <text x="220" y="32" fill="#c6f36b" fontSize="10">
+            gRPC
+          </text>
+          <rect x="268" y="14" width="168" height="58" rx="9" fill="#151f16" stroke="#485d3e" />
+          <text x="352" y="40" fill="#e4f7d3" fontSize="12">
+            INVENTORY
+          </text>
+          <text x="352" y="58" fill="#a9be99" fontSize="9">
+            Reserve / release
+          </text>
+          <text x="220" y="98" fill="#a9be99" fontSize="9">
+            order-created / payment outcomes
+          </text>
+          <rect
+            x="4"
+            y="116"
+            width="432"
+            height="34"
+            rx="7"
+            fill="#c6f36b"
+            fillOpacity=".09"
+            stroke="#617d40"
           />
-        </svg>
-        <div className="grid grid-cols-3 gap-2 sm:gap-3">
-          {[
-            { icon: BookOpen, name: 'CATALOG', sub: 'Product service' },
-            { icon: GitBranch, name: 'ORDERS', sub: 'Order service' },
-            { icon: Database, name: 'INVENTORY', sub: 'Stock & reserves' },
-          ].map(({ icon: Icon, name, sub }) => (
-            <div
-              key={name}
-              className="rounded-lg border border-[#394b33] bg-[#151f16] px-1 py-4 text-center shadow-xl"
-            >
-              <Icon size={20} className="mx-auto mb-2.5 text-[#c6f36b]" />
-              <div className="font-mono text-[8px] tracking-wider text-[#e2e9dd] sm:text-[10px]">
-                {name}
-              </div>
-              <div className="mt-1 text-[7px] text-[#a8b39e] sm:text-[9px]">{sub}</div>
-            </div>
-          ))}
-        </div>
-        <svg viewBox="0 0 440 33" className="h-7 w-full" fill="none">
-          <path d="M68 0V16H372V0M220 0V33" stroke="#657955" />
-          <path d="M68 0V16H372V0M220 0V33" className="flow-line" stroke="#c6f36b" />
-        </svg>
-        <div className="flex items-center justify-between rounded-lg border border-[#617d40] bg-[#c6f36b]/10 px-4 py-3 text-[10px] text-[#d8edb9]">
-          <Workflow size={17} />
-          <span className="font-mono">KAFKA EVENT STREAM</span>
-          <span className="flex gap-1.5">
-            {[0, 1, 2, 3].map((i) => (
-              <i
-                key={i}
-                className="h-2 w-1 rounded-full bg-[#c6f36b]"
-                style={{ opacity: 1 - i * 0.18 }}
-              />
-            ))}
-          </span>
-        </div>
-      </div>
-      <div className="absolute right-7 bottom-4 left-7 hidden justify-between font-mono text-[8px] tracking-wider text-[#a5b09c] sm:flex">
-        <span>REST AT THE EDGE</span>
-        <span>EVENTS AT THE CORE ↗</span>
-      </div>
+          <text x="220" y="137" fill="#d8edb9" fontSize="11" letterSpacing="2">
+            KAFKA EVENT BUS
+          </text>
+          <text x="225" y="177" fill="#a9be99" fontSize="9">
+            Asynchronous delivery
+          </text>
+          <rect x="4" y="194" width="168" height="52" rx="9" fill="#151f16" stroke="#485d3e" />
+          <text x="88" y="217" fill="#e4f7d3" fontSize="11">
+            PAYMENT SERVICE
+          </text>
+          <text x="88" y="234" fill="#a9be99" fontSize="9">
+            Checkout / refunds
+          </text>
+          <rect x="268" y="194" width="168" height="52" rx="9" fill="#151f16" stroke="#485d3e" />
+          <text x="352" y="217" fill="#e4f7d3" fontSize="11">
+            NOTIFICATIONS
+          </text>
+          <text x="352" y="234" fill="#a9be99" fontSize="9">
+            Persist / retry / send
+          </text>
+        </g>
+      </svg>
     </div>
   );
 }
@@ -94,45 +115,43 @@ function LibraryPreview() {
   return (
     <div
       aria-hidden="true"
-      className="relative h-[320px] overflow-hidden bg-[#181522] px-5 pt-6 sm:h-[365px] sm:px-7"
+      className="relative h-[320px] overflow-hidden bg-[#181522] px-5 pt-5 sm:h-[365px] sm:px-7 sm:pt-7"
     >
       <div className="absolute -top-20 -right-20 size-72 rounded-full bg-[#9682df]/10 blur-3xl" />
       <div className="relative flex items-center justify-between border-b border-[#40344f] pb-4 font-mono text-[9px] text-[#b4a4c8]">
         <span className="flex items-center gap-2">
-          <Terminal size={13} /> library / lending.service
+          <BookOpen size={13} /> library / borrow.flow
         </span>
-        <span>ILLUSTRATIVE FLOW</span>
+        <GitBranch size={15} />
       </div>
-      <div className="relative mx-auto mt-4 max-w-[390px] -rotate-3 rounded-xl border border-[#5b4970] bg-[#221c2d] shadow-[0_24px_50px_#0005]">
-        <div className="flex items-center gap-1.5 border-b border-[#40344f] px-5 py-3">
-          <i className="size-1.5 rounded-full bg-[#b08bc2]" />
-          <i className="size-1.5 rounded-full bg-[#776183]" />
-          <i className="size-1.5 rounded-full bg-[#55465c]" />
-          <span className="ml-auto font-mono text-[8px] text-[#bfb2cd]">
-            LendingController.java
-          </span>
+      <div className="relative mx-auto mt-5 max-w-[390px] -rotate-2 rounded-xl border border-[#5b4970] bg-[#221c2d] shadow-[0_24px_50px_#0005]">
+        <div className="flex items-center gap-3 border-b border-[#40344f] px-4 py-3 font-mono text-[10px]">
+          <span className="rounded bg-[#cfb2f3]/15 px-2 py-1 text-[#d7b8fb]">POST</span>
+          <span className="text-[#eee3f8]">/borrow</span>
+          <span className="ml-auto text-[8px] text-[#bfb2cd]">REST API</span>
         </div>
-        <div className="space-y-2 px-5 py-4 font-mono text-[10px] leading-relaxed sm:text-xs">
-          <p>
-            <span className="text-[#c8a8f0]">@PostMapping</span>
-            <span className="text-[#e9e0f3]">("/loans")</span>
-          </p>
-          <p className="text-[#c7b6d9]">
-            <span className="text-[#b9d496]">Loan</span> borrow(Book book) {'{'}
-          </p>
-          <p className="pl-4 text-[#e4d8ee]">verifyAccess(member);</p>
-          <p className="pl-4 text-[#e4d8ee]">validateState(book);</p>
-          <p className="pl-4 text-[#e4d8ee]">
-            <span className="text-[#c8a8f0]">return</span> lending.create(book);
-          </p>
-          <p className="text-[#c7b6d9]">{'}'}</p>
+        <div className="space-y-3 px-4 py-4">
+          {[
+            ['01', 'Look up member', 'Auth via gateway · OpenFeign'],
+            ['02', 'Check & decrement stock', 'Books via gateway · OpenFeign'],
+            ['03', 'Save the loan', 'Borrow service · MySQL'],
+          ].map(([step, name, detail]) => (
+            <div key={step} className="flex items-center gap-3">
+              <span className="grid size-7 shrink-0 place-items-center rounded-md border border-[#564568] font-mono text-[9px] text-[#d7b8fb]">
+                {step}
+              </span>
+              <div>
+                <p className="text-[11px] text-[#ede3f5]">{name}</p>
+                <p className="mt-0.5 font-mono text-[8px] text-[#bfb2cd]">{detail}</p>
+              </div>
+              <Check size={13} className="ml-auto text-[#c5d6a8]" />
+            </div>
+          ))}
         </div>
       </div>
       <div className="relative mx-auto -mt-1 flex w-[90%] rotate-2 items-center justify-between rounded-lg border border-[#746085] bg-[#392e47] px-4 py-3 text-[#e5d9f0] shadow-2xl">
-        <span className="flex items-center gap-2 font-mono text-[9px]">
-          <LockKeyhole size={14} className="text-[#d6b4ff]" /> JWT AUTHORIZATION
-        </span>
-        <Check size={15} className="text-[#d3e9af]" />
+        <span className="font-mono text-[9px]">BORROWED</span>
+        <span className="font-mono text-[9px] text-[#d6b4ff]">DUE IN 14 DAYS</span>
       </div>
     </div>
   );
@@ -166,13 +185,13 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
                 className="relative block w-full text-left focus-visible:-outline-offset-4"
               >
                 {project.kind === 'commerce' ? <CommercePreview /> : <LibraryPreview />}
-                <span className="absolute right-5 bottom-5 grid size-10 place-items-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition-colors group-hover:border-[#c6f36b] group-hover:bg-[#c6f36b] group-hover:text-[#18230c]">
+                <span className="absolute right-5 bottom-5 hidden size-10 place-items-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition-colors group-hover:border-[#c6f36b] group-hover:bg-[#c6f36b] group-hover:text-[#18230c] sm:grid">
                   <ArrowUpRight size={20} />
                 </span>
               </button>
               <div className="p-6 sm:p-8">
                 <div className="eyebrow mb-4 flex items-center justify-between text-muted">
-                  <span>{index === 0 ? 'FLAGSHIP BUILD' : 'BACKEND ENGINEERING'}</span>
+                  <span>{project.category}</span>
                   <span className="text-accent">/{project.number}</span>
                 </div>
                 <h3 className="text-[23px] leading-tight font-semibold tracking-[-.04em] sm:text-[26px]">
@@ -181,6 +200,17 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
                   </button>
                 </h3>
                 <p className="mt-4 text-[13px] leading-7 text-muted">{project.summary}</p>
+                <ul className="mt-5 space-y-2.5">
+                  {project.capabilities.map((capability) => (
+                    <li
+                      key={capability}
+                      className="flex items-start gap-2.5 text-xs leading-5 text-fg"
+                    >
+                      <Check size={14} className="mt-0.5 shrink-0 text-accent" />
+                      {capability}
+                    </li>
+                  ))}
+                </ul>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {project.stack.slice(0, 5).map((tag) => (
                     <span
@@ -289,7 +319,7 @@ export function ProjectDialog({
               </span>
             ))}
           </div>
-          <h3 className="mt-8 text-base font-semibold">What makes it dependable</h3>
+          <h3 className="mt-8 text-base font-semibold">Inside the implementation</h3>
           <ul className="mt-5 space-y-4">
             {project.highlights.map((highlight) => (
               <li key={highlight} className="flex gap-3 text-[13px] leading-7 text-muted">
@@ -301,6 +331,24 @@ export function ProjectDialog({
           <div className="mt-7 flex items-start gap-3 rounded-xl border border-line bg-panel p-5">
             <Workflow size={19} className="mt-1 text-accent" />
             <p className="font-mono text-[11px] leading-6 text-muted">{project.architecture}</p>
+          </div>
+          <div className="mt-7 border-t border-line pt-6">
+            <h3 className="eyebrow mb-3 text-muted">Explore the implementation</h3>
+            <div className="grid gap-2">
+              {project.sourceLinks.map((source) => (
+                <a
+                  key={source.path}
+                  href={project.github + '/blob/' + project.revision + '/' + source.path}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 rounded-lg border border-line px-4 py-3 text-xs text-fg transition-colors hover:bg-panel hover:text-accent"
+                >
+                  <Code2 size={16} className="shrink-0 text-accent" />
+                  <span className="min-w-0 flex-1">{source.label}</span>
+                  <ArrowUpRight size={14} className="shrink-0" />
+                </a>
+              ))}
+            </div>
           </div>
           <a
             href={project.github}

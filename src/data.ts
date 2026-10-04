@@ -17,6 +17,9 @@ export type Project = {
   stack: string[];
   github: string;
   highlights: string[];
+  capabilities: string[];
+  revision: string;
+  sourceLinks: { label: string; path: string }[];
   architecture: string;
   kind: 'commerce' | 'library';
 };
@@ -56,39 +59,107 @@ export const projects: Project[] = [
   {
     id: 'commerce',
     number: '01',
-    title: 'Event-driven commerce platform',
-    category: 'Distributed systems · Full-stack engineering',
+    title: 'Pepekart commerce platform',
+    category: 'Full-stack · Event-driven systems',
     summary:
-      'Seven business services coordinate identity, catalog, inventory, carts, orders, payments, and notifications. Built around reliable workflows, with a React and TypeScript storefront.',
-    stack: ['Java 21', 'Spring Boot', 'Kafka', 'gRPC', 'PostgreSQL', 'Redis', 'MongoDB', 'React'],
+      'A React shopping experience with dedicated seller and admin workspaces, backed by seven Java services. From catalog and carts to checkout, refunds, and transactional email.',
+    stack: [
+      'Java 21',
+      'Spring Boot',
+      'React 19',
+      'Kafka',
+      'gRPC',
+      'TypeScript',
+      'Tailwind CSS',
+      'PostgreSQL',
+      'MongoDB',
+      'Redis',
+      'Stripe',
+      'Testcontainers',
+      'Docker',
+    ],
     github: 'https://github.com/pepetibalaji/ecommerce-platform',
+    capabilities: [
+      'Customer, seller & admin workspaces',
+      'Stripe checkout & refund integration',
+      'Durable events & inventory recovery',
+    ],
     highlights: [
-      'Database-backed idempotency protects checkout from duplicate and concurrent requests.',
-      'Transactional outboxes and retryable inventory compensation keep failures recoverable.',
-      'Signature-verified payment webhooks enter a durable inbox before processing.',
-      'Container-backed integration tests and GitHub Actions check services and the storefront.',
+      'Customer shopping and checkout, seller catalog and inventory tools, and admin operations use separate React routes and role guards.',
+      'PostgreSQL-backed idempotency handles repeated checkout requests. Orders reserve stock through gRPC and queue inventory releases when compensation is needed.',
+      'Stripe hosted checkout and refunds connect to signature-verified webhooks, a durable inbox, duplicate detection, and retry processing.',
+      'Transactional outboxes publish order and payment events through Kafka. Notifications store email intents and retry failed delivery with backoff.',
+      'Testcontainers suites cover concurrent checkout, duplicate webhooks, rollback, and failure recovery. GitHub Actions configures service verification, frontend checks, and Docker builds.',
     ],
     architecture:
-      'React storefront → API gateway → domain services · Kafka events + gRPC inventory',
+      'React → API Gateway → 7 business services · gRPC inventory reservations · Kafka domain events · PostgreSQL / MongoDB / Redis',
     kind: 'commerce',
+    revision: '4d6d07e6c2ec073cb4939deffdebcd1257f732ae',
+    sourceLinks: [
+      {
+        label: 'Checkout, idempotency & inventory recovery',
+        path: 'order-service/src/main/java/com/ecommerce/order/service/OrderServiceImpl.java',
+      },
+      {
+        label: 'Durable payment webhook inbox',
+        path: 'payment-service/src/main/java/com/ecommerce/payment/webhook/VerifiedWebhookInbox.java',
+      },
+      {
+        label: 'Payment reliability integration tests',
+        path: 'payment-service/src/test/java/com/ecommerce/payment/service/impl/PaymentConfirmationPostgresTest.java',
+      },
+    ],
   },
   {
     id: 'library',
     number: '02',
-    title: 'Library management system',
-    category: 'Backend engineering · Testable architecture',
+    title: 'Library lending microservices',
+    category: 'Backend · Spring Cloud',
     summary:
-      'A Java and Spring Boot application for library lending, with JWT authentication and PostgreSQL persistence. Designed around decoupled routing and explicit lending state.',
-    stack: ['Java', 'Spring Boot', 'PostgreSQL', 'JWT', 'JUnit 5', 'Mockito', 'MockMvc'],
+      'A Java backend for member accounts, book catalogs, and borrowing. Three domain services sit behind Spring Cloud Gateway, with Eureka discovery, OpenFeign calls, and MySQL persistence.',
+    stack: [
+      'Java 17',
+      'Spring Boot',
+      'MySQL',
+      'Eureka',
+      'OpenFeign',
+      'Spring Cloud Gateway',
+      'Spring Security',
+      'JWT',
+      'Spring Data JPA',
+      'Maven',
+    ],
     github: 'https://github.com/pepetibalaji/Library-Management-System',
+    capabilities: [
+      'Book catalog & member accounts',
+      '14-day loans & return-date tracking',
+      'Gateway routing & service discovery',
+    ],
     highlights: [
-      'Dynamic service registration separates routing from lending behavior.',
-      'JWT authentication protects application workflows.',
-      'JUnit 5, Mockito, and MockMvc cover service behavior and API integration.',
+      'Authentication, book catalog, and borrowing run as three Spring applications, supported by a separate gateway and Eureka service registry.',
+      'Account flows use BCrypt password encoding and JWT issuance, with token validation in gateway and service filters.',
+      'The borrowing service calls member and book APIs through OpenFeign, forwards the bearer token, checks stock, and requests a stock decrement.',
+      'Each new loan records a 14-day due date in MySQL. APIs expose lending history by member and record return dates.',
+      'Catalog endpoints support adding, retrieving, editing, and deleting books. Spring Data JPA repositories persist users, books, and borrowing records.',
     ],
     architecture:
-      'Authenticated requests → decoupled service routing → lending workflows → PostgreSQL',
+      'Client → Spring Cloud Gateway → Auth / Book / Borrow · Eureka service discovery · OpenFeign calls via gateway · MySQL persistence',
     kind: 'library',
+    revision: 'd8651cb65aa5bf3c8546612c491b5259dc14fe9b',
+    sourceLinks: [
+      {
+        label: 'Borrowing workflow & return tracking',
+        path: 'borrow/src/main/java/library/borrow/service/BorrowService.java',
+      },
+      {
+        label: 'OpenFeign book-service integration',
+        path: 'borrow/src/main/java/library/borrow/api/BookClient.java',
+      },
+      {
+        label: 'Gateway routes & Eureka discovery',
+        path: 'Gateway/src/main/resources/application.properties',
+      },
+    ],
   },
 ];
 
